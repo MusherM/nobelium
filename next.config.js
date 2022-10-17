@@ -1,9 +1,10 @@
 module.exports = {
   webpack5: true,
   images: {
+    // domains: ['gravatar.com']
+    // unoptimized: true,
     loader: 'akamai',
     path: '',
-    domains: ['gravatar.com']
   },
   eslint: {
     dirs: [

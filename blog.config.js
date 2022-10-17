@@ -1,9 +1,9 @@
 const BLOG = {
-  title: '布鲁斯鱼的妙想天开',
-  author: 'amazing-blues',
-  email: 'bluesedenyu@gmail.com',
-  link: 'https://emergencyexit.xyz/',
-  description: '此间的博文大抵有两类，一种是水的，另一种仍是水的罢。 —— 鲁迅',
+  title: 'CRAIGARY',
+  author: 'Craig Hart',
+  email: 'i@craigary.net',
+  link: 'https://nobelium.vercel.app',
+  description: 'This gonna be an awesome website.',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: 'auto', // ['light', 'dark', 'auto'],
   font: 'sans-serif', // ['sans-serif', 'serif']
@@ -17,7 +17,7 @@ const BLOG = {
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
-  socialLink: 'https://twitter.com/bluesedenyu',
+  socialLink: 'https://twitter.com/craigaryhart',
   seo: {
     keywords: ['Blog', 'Website', 'Notion'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
