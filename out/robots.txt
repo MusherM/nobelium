@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://emergencyexit.xyz/
+
+# Sitemaps
+Sitemap: https://emergencyexit.xyz/sitemap.xml

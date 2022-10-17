@@ -1,6 +1,8 @@
 module.exports = {
   webpack5: true,
   images: {
+    loader: 'akamai',
+    path: '',
     domains: ['gravatar.com']
   },
   eslint: {
@@ -11,7 +13,7 @@ module.exports = {
       'pages'
     ]
   },
-  async headers () {
+  async headers() {
     return [
       {
         source: '/:path*{/}?',
