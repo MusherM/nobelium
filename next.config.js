@@ -11,7 +11,7 @@ module.exports = {
       'components',
       'layouts',
       'lib',
-      'pages'
+      'pages',
     ]
   },
   async headers() {
@@ -22,15 +22,6 @@ module.exports = {
           {
             key: 'Permissions-Policy',
             value: 'interest-cohort=()'
-          }
-        ]
-      },
-      {
-        source: '/feed',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'text/xml'
           }
         ]
       }
@@ -44,7 +35,23 @@ module.exports = {
         'react-dom/test-utils': 'preact/test-utils',
         'react-dom': 'preact/compat'
       })
+      config.resolve.fallback.fs = false;
     }
+
+    if (!dev && isServer) {
+      const originalEntry = config.entry;
+
+      config.entry = async () => {
+        const entries = { ...(await originalEntry()) };
+
+        // These scripts can import components from the app and use ES modules
+        entries['scripts/generate-rss.js'] = './scripts/generate-rss.js';
+
+        return entries;
+      };
+
+    }
+
     return config
   }
 }
