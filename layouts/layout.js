@@ -32,7 +32,7 @@ const Layout = ({
     >
       <article>
         <h1 className="font-bold text-3xl text-black dark:text-white">
-          {frontMatter.pageIcon || '' } {frontMatter.title}
+          {frontMatter.pageIcon || ''} {frontMatter.title}
         </h1>
         {frontMatter.type[0] !== 'Page' && (
           <nav className="flex mt-7 items-start text-gray-500 dark:text-gray-400">
@@ -61,6 +61,12 @@ const Layout = ({
                   <TagItem key={tag} tag={tag} />
                 ))}
               </div>
+            )}
+            {frontMatter.pageCover && frontMatter.pageCover.startsWith('http') && (
+              <div> <img src={ frontMatter.pageCover }></img> </div>
+            )}
+            {frontMatter.pageCover && frontMatter.pageCover.startsWith('/') && (
+              <div> <img src={'https://www.notion.so'+frontMatter.pageCover}></img> </div>
             )}
           </nav>
         )}
