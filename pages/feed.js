@@ -1,18 +1,17 @@
-import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
-import SearchLayout from '@/layouts/search'
+import { getAllPosts } from '@/lib/notion'
+import { generateRss } from '@/lib/rss'
 
-export default function feed ({ tags, posts }) {
-  return <SearchLayout tags={tags} posts={posts} />
+export default function feed ({ xmlFeed }) {
+  return xmlFeed
 }
 export async function getStaticProps () {
   const posts = await getAllPosts({ includePages: false })
-  const tags = getAllTagsFromPosts(posts)
+  const latestPosts = posts.slice(0, 10)
+  const xmlFeed = await generateRss(latestPosts)
   return {
     props: {
-      tags,
-      posts
-    },
-    revalidate: 1
+      xmlFeed
+    }
   }
 }
 

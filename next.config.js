@@ -24,6 +24,15 @@ module.exports = {
             value: 'interest-cohort=()'
           }
         ]
+      },
+      {
+        source: '/feed',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/xml'
+          }
+        ]
       }
     ]
   },
