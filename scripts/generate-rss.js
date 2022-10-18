@@ -10,10 +10,9 @@ async function generateFeedXml() {
   const xmlFeed = await generateFeed(latestPosts)
   const staticOutputPath = path.join(process.cwd(), 'public');
 
-  fs.mkdirSync(`${staticOutputPath}/feed`, { recursive: true });
-  fs.writeFileSync(`${staticOutputPath}/feed/feed.xml`, xmlFeed.rss2())
-  fs.writeFileSync(`${staticOutputPath}/feed/atom.xml`, xmlFeed.atom1())
-  fs.writeFileSync(`${staticOutputPath}/feed/feed.json`, xmlFeed.json1())
+  fs.writeFileSync(`${staticOutputPath}/feed.xml`, xmlFeed.rss2())
+  fs.writeFileSync(`${staticOutputPath}/atom.xml`, xmlFeed.atom1())
+  fs.writeFileSync(`${staticOutputPath}/feed.json`, xmlFeed.json1())
 }
 
 generateFeedXml();
