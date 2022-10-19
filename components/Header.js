@@ -58,9 +58,8 @@ const Header = ({ navBarTitle, fullWidth }) => {
     <>
       <div className="observer-element h-4 md:h-12" ref={sentinalRef}></div>
       <div
-        className={`sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60 ${
-          !fullWidth ? 'max-w-3xl px-4' : 'px-4 md:px-24'
-        }`}
+        className={`sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60 ${!fullWidth ? 'max-w-3xl px-4' : 'px-4 md:px-24'
+          }`}
         id="sticky-nav"
         ref={navRef}
       >
@@ -69,18 +68,20 @@ const Header = ({ navBarTitle, fullWidth }) => {
             <a aria-label={BLOG.title}>
               <div className="h-6">
                 <svg
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 28 28"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect
-                    width="27"
-                    height="27"
+                  <circle
+                    cx="14"
+                    cy="14"
+                    r="14"
                     className="fill-current text-black dark:text-white"
                   />
-                  <rect width="27" height="27" fill="url(#paint0_radial)" />
+                  <circle cx="14" cy="14" r="14" fill="url(#paint0_radial)" />
+                  <circle cx="8" cy="8" r="1.5" fill="white" />
                   <defs>
                     <radialGradient
                       id="paint0_radial"
@@ -91,7 +92,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
                       gradientTransform="rotate(45) scale(39.598)"
                     >
                       <stop stopColor="#3399FF" stopOpacity="0.9" />
-                      <stop offset="1" stopColor="#E0E0E0" stopOpacity="0.3" />
+                      <stop offset="1" stopColor="#FF3399" stopOpacity="0.6" />
                     </radialGradient>
                   </defs>
                 </svg>
@@ -100,16 +101,16 @@ const Header = ({ navBarTitle, fullWidth }) => {
           </Link>
           {navBarTitle
             ? (
-            <p className="ml-2 font-medium text-day dark:text-night header-name">
-              {navBarTitle}
-            </p>
-              )
+              <p className="ml-2 font-medium text-day dark:text-night header-name">
+                {navBarTitle}
+              </p>
+            )
             : (
-            <p className="ml-2 font-medium text-day dark:text-night header-name">
-              {BLOG.title} {'     '}
-              <span className="font-thin text-sm">{BLOG.description}</span>
-            </p>
-              )}
+              <p className="ml-2 font-medium text-day dark:text-night header-name">
+                {BLOG.title} {'     '}
+                <span className="font-thin text-sm">{BLOG.description}</span>
+              </p>
+            )}
         </div>
         <NavBar />
       </div>
