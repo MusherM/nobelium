@@ -11,8 +11,8 @@ async function generateFeedXml() {
   const staticOutputPath = path.join(process.cwd(), 'public');
 
   fs.writeFileSync(`${staticOutputPath}/feed.xml`, xmlFeed.rss2())
-  fs.writeFileSync(`${staticOutputPath}/atom.xml`, xmlFeed.atom1())
-  fs.writeFileSync(`${staticOutputPath}/feed.json`, xmlFeed.json1())
+  // fs.writeFileSync(`${staticOutputPath}/atom.xml`, xmlFeed.atom1())
+  // fs.writeFileSync(`${staticOutputPath}/feed.json`, xmlFeed.json1())
 }
 
 generateFeedXml();
