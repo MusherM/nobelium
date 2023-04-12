@@ -1,5 +1,5 @@
 #!/bin/bash
-date +s% > trigger
+date +%s > trigger
 
 git add .
 git commit -m 'update blog'
