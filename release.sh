@@ -3,4 +3,4 @@ date +s% > trigger
 
 git add .
 git commit -m 'update blog'
-git push origin master
+git push origin main
