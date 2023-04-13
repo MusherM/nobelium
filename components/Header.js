@@ -81,7 +81,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
                     className="fill-current text-black dark:text-white"
                   />
                   <circle cx="14" cy="14" r="14" fill="url(#paint0_radial)" />
-                  <circle cx="8" cy="8" r="1.5" fill="white" />
+                  <circle cx="8" cy="8" r="2" fill="white" fill-opacity="0.1" />
                   <defs>
                     <radialGradient
                       id="paint0_radial"
@@ -91,8 +91,8 @@ const Header = ({ navBarTitle, fullWidth }) => {
                       gradientUnits="userSpaceOnUse"
                       gradientTransform="rotate(45) scale(39.598)"
                     >
-                      <stop stopColor="#7AA0DA" stopOpacity="0.9" />
-                      <stop offset="1" stopColor="#FFFFCC" stopOpacity="0.6" />
+                      <stop stopColor="#7FF72A" stopOpacity="1" />
+                      <stop offset="1" stopColor="#001FCC" stopOpacity="0.1" />
                     </radialGradient>
                   </defs>
                 </svg>
