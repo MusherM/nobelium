@@ -81,7 +81,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
                     className="fill-current text-black dark:text-white"
                   />
                   <circle cx="14" cy="14" r="14" fill="url(#paint0_radial)" />
-                  <circle cx="8" cy="8" r="2" fill="white" fill-opacity="0.1" />
+                  <circle cx="8" cy="8" r="2" fill="white" />
                   <defs>
                     <radialGradient
                       id="paint0_radial"
