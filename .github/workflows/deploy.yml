@@ -22,6 +22,7 @@ jobs:
 
       - name: Build
         run: |
+          npm cache clean -f
           npm i --legacy-peer-deps -d
           yarn build
           yarn export
