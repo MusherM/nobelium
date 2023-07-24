@@ -7,7 +7,7 @@ const NavBar = () => {
   const locale = useLocale()
   const links = [
     { id: 1, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.SURFING, to: '/surfing', show: true },
+    { id: 2, name: locale.NAV.SURFING, to: '/tag/surfing', show: true },
     { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true }
   ]
   return (
