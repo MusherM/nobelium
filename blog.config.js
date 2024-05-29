@@ -1,7 +1,7 @@
 const BLOG = {
   title: "Musher's Frontend Coding Blog",
   author: "Musher",
-  email: "musher@gmail.com",
+  email: "musher@foxmail.com",
   link: "",
   description: "無限進步",
   lang: "zh-CN", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
