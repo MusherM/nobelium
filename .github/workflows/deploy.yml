@@ -25,8 +25,6 @@ jobs:
           npm i --registry https://registry.npmmirror.com --legacy-peer-deps -d 
           yarn build
           yarn export
-        env:
-          NODE_ENV: production
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
