@@ -4,7 +4,7 @@
         <title>Musher's Frontend Coding Blog</title>
         <link>/</link>
         <description>無限進步</description>
-        <lastBuildDate>Wed, 29 May 2024 12:51:47 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 May 2024 13:04:08 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -103,7 +103,8 @@ Time Stamps 👇
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> nextConfig<span class="token punctuation">;</span></code></pre><div class="notion-text notion-block-7d6e37c8d4e040048cdc942ffb521cc9">同时修改<code class="notion-inline-code">img</code>标签的<code class="notion-inline-code">src</code>如下</div><pre class="notion-code language-html"><code class="language-html">&lt;img src={
+<span class="token keyword">export</span> <span class="token keyword">default</span> nextConfig<span class="token punctuation">;</span></code></pre><div class="notion-text notion-block-7d6e37c8d4e040048cdc942ffb521cc9">同时修改<code class="notion-inline-code">img</code>标签的<code class="notion-inline-code">src</code>如下</div><pre class="notion-code language-html"><code class="language-html">&lt;img 
+	src={
     (process.env.NEXT_PUBLIC_ASSET_PREFIX || "") + "/profile.svg"
   }
   alt="profile"
