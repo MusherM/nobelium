@@ -1,6 +1,7 @@
+const isProd = process.env.NODE_ENV === "production";
 module.exports = {
-  basePath: "/nobelium",
-  assetPrefix: "/nobelium/",
+  basePath: isProd ? "/Portofolio" : "",
+  assetPrefix: isProd ? "/Portofolio/" : "",
   webpack5: true,
   images: {
     // domains: ['gravatar.com']
