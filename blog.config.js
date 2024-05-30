@@ -13,7 +13,8 @@ const BLOG = {
   since: 2019, // If leave this empty, current year will be used.
   postsPerPage: 9,
   sortByDate: true,
-  showAbout: true,
+  showAbout: false,
+  showSurfing: false,
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: "https://og-image-craigary.vercel.app", // The link to generate OG image, don't end with a slash
