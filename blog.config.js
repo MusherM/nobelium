@@ -49,7 +49,7 @@ const BLOG = {
       distractionFreeMode: false,
     },
     utterancesConfig: {
-      repo: "MusherM/github.com/MusherM/nobelium",
+      repo: "MusherM/musherm.github.io",
     },
     cusdisConfig: {
       appId: "", // data-app-id
