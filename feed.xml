@@ -4,7 +4,7 @@
         <title>Musher's Frontend Coding Blog</title>
         <link>/</link>
         <description>無限進步</description>
-        <lastBuildDate>Wed, 12 Jun 2024 04:11:19 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Jun 2024 06:29:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -154,7 +154,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token literal-property property">showSurfing</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></code></pre><div class="notion-blank notion-block-603dd37e982c476f834205f4cb4f1e2c"> </div></main>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[ ]]></title>
+            <title><![CDATA[ Next.js 踩坑记（1）——路径体操]]></title>
             <link>/path-middle</link>
             <guid>/path-middle</guid>
             <pubDate>Wed, 29 May 2024 00:00:00 GMT</pubDate>
