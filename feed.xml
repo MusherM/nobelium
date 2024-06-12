@@ -4,11 +4,81 @@
         <title>Musher's Frontend Coding Blog</title>
         <link>/</link>
         <description>無限進步</description>
-        <lastBuildDate>Mon, 03 Jun 2024 08:16:28 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Jun 2024 04:11:19 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2024, Musher</copyright>
+        <item>
+            <title><![CDATA[Next.js 踩坑记（3）——路径体操（2）]]></title>
+            <link>/path-middle2</link>
+            <guid>/path-middle2</guid>
+            <pubDate>Wed, 12 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[进一步讨论 nextjs 中静态资源的路径问题]]></description>
+            <content:encoded><![CDATA[<main class="notion light-mode notion-page notion-block-9ca0671db5804105825cd8ef4c531d84"><div class="notion-viewport"></div><h3 class="notion-h notion-h2 notion-h-indent-0 notion-block-375e599595eb40e8b610cb2d2ac07160" data-id="375e599595eb40e8b610cb2d2ac07160"><span><div id="375e599595eb40e8b610cb2d2ac07160" class="notion-header-anchor"></div><a class="notion-hash-link" href="#375e599595eb40e8b610cb2d2ac07160" title="前言"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">前言</span></span></h3><div class="notion-text notion-block-250198b10c874b52b7ec6fa87384a8c9">在 <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://musherm.github.io/nobelium/path-middle">Next.js 踩坑记（1）——路径体操</a> 中，我们已经讨论了在 Nextjs 中，当我们部署在一个“子路径”时，如何处理静态资源路径失效的问题，今天我们进一步探讨，内容总结如下：</div><ol start="1" class="notion-list notion-list-numbered notion-block-77e8fb3e6d4542899eef5a6ebafc0812"><li>使用<code class="notion-inline-code">nextconfig</code>中的<code class="notion-inline-code">publicRuntimeConfig</code> 来定义路径，相比于使用环境变量而言更优雅；</li></ol><ol start="2" class="notion-list notion-list-numbered notion-block-340966436813437fb4321512e26756c8"><li><code class="notion-inline-code">publicRuntimeConfig</code> 只能在服务端组件中获取，但往往需要在客户端使用，如何解决该矛盾？</li></ol><h3 class="notion-h notion-h2 notion-h-indent-0 notion-block-1bb39b4ff06044d8aee05869c1077813" data-id="1bb39b4ff06044d8aee05869c1077813"><span><div id="1bb39b4ff06044d8aee05869c1077813" class="notion-header-anchor"></div><a class="notion-hash-link" href="#1bb39b4ff06044d8aee05869c1077813" title="使用publicRuntimeConfig 定义子路径"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">使用<code class="notion-inline-code">publicRuntimeConfig</code> 定义子路径</span></span></h3><div class="notion-text notion-block-321add1f54b14f2fb2ac47fb42c9406d">在后续的开发过程中，我通过在<code class="notion-inline-code">nextconfig</code>中的<code class="notion-inline-code">publicRuntimeConfig</code> 定义一份一模一样的basePath和 assetPath，就像这样：</div><pre class="notion-code language-javascript"><code class="language-javascript"><span class="token comment">/** @type {import('next').NextConfig} */</span>
+<span class="token keyword">const</span> isProd <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span>
+<span class="token keyword">const</span> subBasePath <span class="token operator">=</span> <span class="token string">'/Promptopia'</span>
+<span class="token keyword">const</span> subAssetPrefix <span class="token operator">=</span> subBasePath <span class="token operator">+</span> <span class="token string">'/'</span>
+<span class="token keyword">const</span> nextConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">basePath</span><span class="token operator">:</span> isProd <span class="token operator">?</span> subBasePath <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">assetPrefix</span><span class="token operator">:</span> isProd <span class="token operator">?</span> subAssetPrefix <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">publicRuntimeConfig</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">basePath</span><span class="token operator">:</span> isProd <span class="token operator">?</span> subBasePath <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">assetPrefix</span><span class="token operator">:</span> isProd <span class="token operator">?</span> subAssetPrefix <span class="token operator">:</span> <span class="token string">''</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">experimental</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">serverComponentsExternalPackages</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'mongoose'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">images</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">domains</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'lh3.googleusercontent.com'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> nextConfig
+</code></pre><div class="notion-text notion-block-fc3f59a7b5b7494fa2605de881b7ee12">然后这样使用：</div><pre class="notion-code language-javascript"><code class="language-javascript"><span class="token keyword">import</span> getConfig <span class="token keyword">from</span> <span class="token string">'next/config'</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> publicRuntimeConfig <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> basePath <span class="token punctuation">}</span> <span class="token operator">=</span> publicRuntimeConfig</code></pre><div class="notion-text notion-block-609efd3b5d0249ba8396dba1346fcd6a">这种方式其实跟前文使用环境变量的方式是一个道理，只是你不需要再在环境变量里 copy 一份这个路径了，能够统一修改。</div><h3 class="notion-h notion-h2 notion-h-indent-0 notion-block-75bdf29c2ea54b9eb0d6c22e5f646680" data-id="75bdf29c2ea54b9eb0d6c22e5f646680"><span><div id="75bdf29c2ea54b9eb0d6c22e5f646680" class="notion-header-anchor"></div><a class="notion-hash-link" href="#75bdf29c2ea54b9eb0d6c22e5f646680" title="解决该方法只能在服务端组件中使用的问题"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">解决该方法只能在服务端组件中使用的问题</span></span></h3><div class="notion-text notion-block-92a101c24245439aba2c10aeb7b3f686">由于<code class="notion-inline-code">publicRuntimeConfig</code> 只能在服务端组件中获取，但又往往需要在客户端组件中使用，我们很容易想到使用 <code class="notion-inline-code">props</code> 传递，但当组件层级嵌套过深时，就会需要<b>逐级传递</b>，这是我们不需要看到的，在 React 中，我们使用 <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://zh-hans.react.dev/learn/passing-data-deeply-with-context">Context</a> 组件来解决该问题。</div><div class="notion-text notion-block-def8484ac2e4445d8daf765890bb65c8">你可能会想到，我在一个组件通过<code class="notion-inline-code">publicRuntimeConfig</code> 来获取子路径，再通过 Context 组件提供上下文并导出，不就可以到处用了吗，这就带来我们面临的矛盾：</div><ul class="notion-list notion-list-disc notion-block-cc0d3664aaa04049bf5ace284f2acad4"><li><code class="notion-inline-code">publicRuntimeConfig</code> 只能在服务端调用，而 <code class="notion-inline-code">useContext</code> 则正好相反，只能在客户端调用（本质上和 <code class="notion-inline-code">useState</code> 一样，是 <code class="notion-inline-code">hook</code>）</li></ul><div class="notion-text notion-block-8469ef853eb04cd99d7ad72afbd5d6ce">所以“获取数据”和“提供上下文”这两件事就无法在同一层级完成，我们<b>必须</b>在处于更高层级的服务端组件中获取数据，通过 <code class="notion-inline-code">props</code> 传递给当前层级的客户端组件，再在客户端组件中通过 <code class="notion-inline-code">Context</code> 组件提供上下文给后面层级的组件，实践如下：</div><div class="notion-text notion-block-419ef09105db4feca523920a43c4e6c4">首先，我们需要创建一个 Context 组件：</div><pre class="notion-code language-javascript"><code class="language-javascript"><span class="token comment">// Context/basePathContext.js</span>
+<span class="token string">'use client'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+
+<span class="token keyword">const</span> basePathContext <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> basePathContext</code></pre><div class="notion-text notion-block-b712d072f3d943019d82f7c960addfea">然后，我们需要在服务端组件中获取数据并传递给子组件：</div><pre class="notion-code language-javascript"><code class="language-javascript"><span class="token comment">// app/page.jsx</span>
+<span class="token keyword">import</span> Feed <span class="token keyword">from</span> <span class="token string">'@/components/Feed'</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> getConfig <span class="token keyword">from</span> <span class="token string">'next/config'</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Home</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> publicRuntimeConfig <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">getConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> basePath <span class="token punctuation">}</span> <span class="token operator">=</span> publicRuntimeConfig
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>section className<span class="token operator">=</span><span class="token string">"w-full flex-center flex-col"</span><span class="token operator">></span>
+    <span class="token punctuation">{</span><span class="token comment">//***}</span>
+      <span class="token operator">&lt;</span>Feed basePath<span class="token operator">=</span><span class="token punctuation">{</span>basePath<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token punctuation">{</span><span class="token comment">//***}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>section<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Home
+</code></pre><div class="notion-text notion-block-d459af8b9a304a2da9f8277ac25666ef">在子组件中，接受数据并调用<code class="notion-inline-code">basePathContext.Provider</code> 为更深层级提供上下文：</div><pre class="notion-code language-javascript"><code class="language-javascript"><span class="token comment">// components/Feed.jsx</span>
+<span class="token string">'use client'</span>
+<span class="token keyword">import</span> basePathContext <span class="token keyword">from</span> <span class="token string">'@/context/basePathContext'</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Feed</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> basePath <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>basePathContext<span class="token punctuation">.</span>Provider value<span class="token operator">=</span><span class="token punctuation">{</span>basePath<span class="token punctuation">}</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>PromptCard<span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>basePathContext<span class="token punctuation">.</span>Provider<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Feed</code></pre><div class="notion-text notion-block-dcd50f7c307a445394428f4498225639">在后续的层级中，就可以通过<code class="notion-inline-code">useContext(basePathContext)</code>来获取这个值</div><pre class="notion-code language-javascript"><code class="language-javascript"><span class="token comment">// components/PromptCard.jsx</span>
+<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useContext<span class="token punctuation">,</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> basePathContext <span class="token keyword">from</span> <span class="token string">'@/context/basePathContext'</span>
+
+<span class="token keyword">const</span> basePath <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>basePathContext<span class="token punctuation">)</span></code></pre><h3 class="notion-h notion-h2 notion-h-indent-0 notion-block-06bacc51b4d248aab11e2a4a57d7ad5d" data-id="06bacc51b4d248aab11e2a4a57d7ad5d"><span><div id="06bacc51b4d248aab11e2a4a57d7ad5d" class="notion-header-anchor"></div><a class="notion-hash-link" href="#06bacc51b4d248aab11e2a4a57d7ad5d" title="总结"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">总结</span></span></h3><div class="notion-text notion-block-ab301f5803224be8a1f50446c95be5fa">也许这个问题我们可以通过哪里需要使用路径，哪里就调用环境变量来解决，但这并不只解决了一个简单的子路径部署问题，而是解决了“仅客户端可用”和“仅服务端可用”的矛盾问题，我们通过这样的方式，可以实现在客户端使用任意的“仅服务端可用变量”。</div></main>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[ 使用 Nobelium 从 Notion 构建你的个人博客]]></title>
             <link>/use-nobelium-to-construct-your-blog-from-notion</link>
@@ -84,7 +154,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token literal-property property">showSurfing</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></code></pre><div class="notion-blank notion-block-603dd37e982c476f834205f4cb4f1e2c"> </div></main>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Next.js 踩坑记（1）——路径体操]]></title>
+            <title><![CDATA[ ]]></title>
             <link>/path-middle</link>
             <guid>/path-middle</guid>
             <pubDate>Wed, 29 May 2024 00:00:00 GMT</pubDate>
