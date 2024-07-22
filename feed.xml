@@ -4,19 +4,11 @@
         <title>Musher's Frontend Coding Blog</title>
         <link>/</link>
         <description>無限進步</description>
-        <lastBuildDate>Sat, 20 Jul 2024 07:00:47 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 22 Jul 2024 02:24:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2024, Musher</copyright>
-        <item>
-            <title><![CDATA[Apple Website 开发笔记——如何使用GSAP写一个轮播视频的进度条动画]]></title>
-            <link>/Apple-GSAP-anime</link>
-            <guid>/Apple-GSAP-anime</guid>
-            <pubDate>Sat, 20 Jul 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[如何使用GSAP设计一个轮播视频以及进度条动画？]]></description>
-            <content:encoded><![CDATA[<main class="notion light-mode notion-page notion-block-c561e3b361974b8596a49b304148ae37"><div class="notion-viewport"></div><div class="notion-text notion-block-0e8ac25ced3d447f8798ef5d8728185a">话不多说，先看效果：</div><figure class="notion-asset-wrapper notion-asset-wrapper-video notion-block-e966f0d23a97476e8b99051ae550f1a3"><div style="position:relative;display:flex;justify-content:center;align-self:center;width:708px;max-width:100%;flex-direction:column;height:320px"><iframe class="notion-asset-object-fit" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/01ff42de-5b53-40d7-a69e-999e3574e640/f44bac51-e1a9-47ce-aba9-2a2e72fc49eb/Arc_2024-07-20_14-56-20.mp4" title="iframe video" frameBorder="0" allowfullscreen="" loading="lazy"></iframe></div></figure><div class="notion-blank notion-block-ee3025786cb4436ebfd311211e0da0d6"> </div></main>]]></content:encoded>
-        </item>
         <item>
             <title><![CDATA[Promptopia 开发笔记（3）——实现一个自定义Hook]]></title>
             <link>/Promptopia-dev-note-implement-custom-hooks</link>
